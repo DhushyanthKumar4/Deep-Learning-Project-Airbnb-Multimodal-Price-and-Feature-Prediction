@@ -1,0 +1,23 @@
+Objective:
+Predict Airbnb listing price, room type, and/or occupancy using property images + tabular features.
+
+Inputs (X):
+•	Image of the property
+•	Structured data: amenities, neighborhood, reviews, host info
+
+Outputs (y):
+•	Regression: Price (continuous)
+•	Classification: Room type (entire, private, shared), availability category
+
+DL Type:
+•	Supervised learning
+•	CNN + multimodal fusion
+
+Business / Research Metrics:
+•	Primary: MAE, RMSE (price), Accuracy (classification)
+•	Secondary: R², F1-score (if classification is imbalanced)
+
+Constraints:
+•	Moderate dataset (~5k images) → transfer learning recommended
+•	Variable image quality and size → preprocessing / resizing needed
+•	explainability (Grad-CAM, SHAP)
