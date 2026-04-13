@@ -59,3 +59,9 @@ if st.button("Predict Price"):
 
         except Exception as e:
             st.error(f"Error during prediction: {str(e)}")
+
+# UX Upgrade
+
+st.image(pil_image, caption="Uploaded Property", use_column_width=True)
+
+st.info("Prediction uses both visual and structured signals.")
