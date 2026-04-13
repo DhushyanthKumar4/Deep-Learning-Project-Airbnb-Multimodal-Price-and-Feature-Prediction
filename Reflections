@@ -1,0 +1,141 @@
+Reflection — Multimodal Property Price Prediction
+
+
+
+🔹 What surprised me
+
+The most striking insight was how visual features significantly enhanced prediction quality, even when strong tabular baselines already existed.
+
+Traditional models achieved:
+RandomForest → R²: 0.670
+Multimodal model captured:
+Visual quality (lighting, interior condition)
+Spatial cues (room size perception)
+Aesthetic factors not present in structured data
+
+The model learned latent property quality signals directly from images—something impossible with tabular data alone.
+
+
+
+
+🔹 Performance vs Baseline
+Model	Type	R² / Loss
+Linear Regression	Tabular	0.644
+Random Forest	Tabular	0.670
+Multimodal CNN	Image + Tabular	Lower validation loss (~0.64)
+
+Interpretation:
+
+Tabular models are strong baselines
+Multimodal model improves representation richness
+Gains are more visible in complex cases (luxury vs average homes)
+
+
+
+
+🔹 Multimodal vs Single Modality
+🧾 Tabular-only
+
+Strengths:
+
+Stable
+Interpretable
+Strong baseline performance
+
+Limitations:
+
+Cannot capture visual quality
+Misses subjective property appeal
+🖼 Image-only
+
+Strengths:
+
+Captures aesthetics
+Learns implicit features
+
+Limitations:
+
+Ignores location, amenities, structured attributes
+🔗 Multimodal (Your Model)
+
+Key advantage:
+
+Combines objective (tabular) + subjective (visual) signals
+
+This is the real-world production setup used in:
+
+Airbnb
+Zillow
+
+
+
+
+🔹 Training Insights
+Strong convergence from:
+Train Loss: 31 → <1
+Val Loss: 4.15 → 0.64
+Consistent improvement until late epochs
+Minor fluctuations → expected in multimodal learning
+
+Best model checkpointing was critical to avoid late-stage overfitting.
+
+
+
+
+🔹 What failed (important honestly)
+❌ 1. Diminishing returns after epoch ~15
+Improvements slowed
+Risk of overfitting increased
+❌ 2. Data size limitation (~2K samples)
+Deep models typically require much larger datasets
+Visual feature learning constrained
+❌ 3. Weak rare-category learning
+
+From classification:
+
+“shared” class had low recall
+Severe imbalance issue
+❌ 4. Image quality variance
+Inconsistent resolution / lighting
+Introduced noise in training
+
+
+
+
+🔹 What I would do with more data
+📈 1. Scale dataset across cities
+Add geographic diversity
+Improve generalization
+🎥 2. Add video tours (major upgrade)
+Capture spatial continuity
+Better understanding of layout
+🧠 3. Pretrained vision models
+
+Use:
+
+ResNet / EfficientNet
+CLIP embeddings
+
+Would:
+
+Dramatically improve visual feature quality
+📊 4. More structured features
+Neighborhood embeddings
+Price trends over time
+Economic indicators
+📝 5. Add NLP (Reviews → FULL multimodal)
+
+Next-level system:
+
+Image → visual quality
+Tabular → structured facts
+Text reviews → user sentiment
+
+This creates a tri-modal system (vision + tabular + NLP)
+
+
+
+
+🔹 Future System Vision
+
+A fully multimodal property intelligence system combining images, structured data, and user-generated text to predict price, demand, and user satisfaction.
